@@ -1,5 +1,22 @@
+function pathadd() {
+    if ! echo "$PATH" | /bin/grep -Eq "(^|:)$1($|:)" ; then
+        if [ "$2" = "after" ] ; then
+            PATH="$PATH:$1"
+        else
+            PATH="$1:$PATH"
+        fi
+    fi
+}
+
 export GOROOT=/usr/local/go
 export TEXLIVE=/usr/local/texlive/2017
 export NPM_PACKAGES=${HOME}/.npm-packages
 export GOPATH=$HOME/Development/Workspaces/go
 #export DOCKER_HOST=tcp://localhost:2375
+
+pathadd ${HOME}/bin before
+pathadd ${TEXLIVE}/bin/x86_64-linux
+pathadd ${GOROOT}/bin
+pathadd ${NPM_PACKAGES}/bin after
+
+setopt append_history
