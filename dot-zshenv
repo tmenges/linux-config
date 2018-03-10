@@ -1,0 +1,5 @@
+export GOROOT=/usr/local/go
+export TEXLIVE=/usr/local/texlive/2017
+export NPM_PACKAGES=${HOME}/.npm-packages
+export GOPATH=$HOME/Development/Workspaces/go
+#export DOCKER_HOST=tcp://localhost:2375
